@@ -8,7 +8,6 @@ pipeline {
                 }
             }
 
-    stages {
         stage {
             steps {
                 sh '''
@@ -16,5 +15,4 @@ pipeline {
                  '''
             }
         }
-    }
 }
