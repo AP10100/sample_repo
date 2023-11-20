@@ -1,18 +1,28 @@
-/* groovylint-disable-next-line CompileStatic */
 pipeline {
-            agent {
-                kubernetes {
-                    label pipelineParams.ApplicationName + "-${labelEpochTime}-${BUILD_ID}"
+    agent {
+        kubernetes {
+            label pipelineParams.ApplicationName+"-${labelEpochTime}-${BUILD_ID}"
+            defaultContainer 'jnlp'
+            yamlFile pipelineParams.JenkinsYamlPath
+        }
+    }
 
-                    defaultContainer 'jnlp'
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the GitHub repository
+                script {
+                    checkout scm
                 }
             }
+        }
 
-        stage {
+        stage('Run Python Script') {
             steps {
-                sh '''
-                python3 script.py
-                 '''
+                // Assuming your Python script is named 'your_script.py'
+                sh "python3 script.py""
             }
         }
+    }
+
 }
