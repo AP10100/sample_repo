@@ -1,3 +1,5 @@
+def pipelineParams = [:]
+
 pipeline {
     agent {
         kubernetes {
