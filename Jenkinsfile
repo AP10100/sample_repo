@@ -14,7 +14,7 @@ pipeline {
         stage('Run Python Script') {
             steps {
                 // Assuming your Python script is named 'your_script.py'
-                sh "python3 script.py"
+                sh "python3 demo.py"
             }
         }
     }
