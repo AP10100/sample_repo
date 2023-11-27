@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-            label pipelineParams.ApplicationName+"-${labelEpochTime}-${BUILD_ID}"
-            defaultContainer 'jnlp'
-            yamlFile pipelineParams.JenkinsYamlPath
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
